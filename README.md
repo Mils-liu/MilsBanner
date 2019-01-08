@@ -3,10 +3,10 @@
 # 效果
 gif里是自动轮播，被我拖动和点击的效果
 ##### 1.默认配置
-![默认配置](https://upload-images.jianshu.io/upload_images/7019098-b09e1cd1a3e7b531.gif?imageMogr2/auto-orient/strip)
+![默认配置](https://upload-images.jianshu.io/upload_images/7019098-b09e1cd1a3e7b531.gif)
 ##### 2.自定义配置
-![自定义配置](https://upload-images.jianshu.io/upload_images/7019098-31c72842ab7f5d58.gif?imageMogr2/auto-orient/strip)
-#使用
+![自定义配置](https://upload-images.jianshu.io/upload_images/7019098-31c72842ab7f5d58.gif)
+# 使用
 ##### 1. 依赖
 ````java
 allprojects {
