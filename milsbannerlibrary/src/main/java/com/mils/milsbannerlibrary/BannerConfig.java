@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 
+import com.mils.milsbannerlibrary.util.DisplayUtils;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -50,6 +52,8 @@ public class BannerConfig {
 
     private final int DOT_DEFAULT_COLOR = 0XFFFFFFFF;
 
+    private final int DOT_SIZE = 10;
+
     /*轮播图循环起始时刻，单位毫秒*/
     private int loopStart = LOOPSTART;
 
@@ -71,6 +75,9 @@ public class BannerConfig {
     /*item未选中的颜色*/
     private int dot_default_color = DOT_DEFAULT_COLOR;
 
+    /*Dot的大小*/
+    private int dot_size = DOT_SIZE;
+
     //当前索引位置以及上一个索引位置
     private int index;
     private int preIndex;
@@ -85,17 +92,6 @@ public class BannerConfig {
         this.mContext = mContext;
         mActivity = (Activity)mContext;
         pageTransform = new PageTransform();
-    }
-
-    public BannerConfig(Context mContext, ViewPager viewPager, RadioGroup radioGroup, int[] images){
-        this.mContext = mContext;
-        mActivity = (Activity)mContext;
-        this.viewPager = viewPager;
-        this.radioGroup = radioGroup;
-        //this.images = images;
-        if (images.length<=1){
-            isLoop = false;
-        }
     }
 
     public BannerAdapter getBannerAdapter(){
@@ -143,16 +139,23 @@ public class BannerConfig {
         this.scrollDuration = scrollDuration;
     }
 
-    private void setMaxRotation(float maxRotation){
+    public void setMaxRotation(float maxRotation){
+        if (maxRotation>360){
+            maxRotation=360;
+        }
         pageTransform.setMaxRotation(maxRotation);
     }
 
-    private void setMinAlpha(float minAlpha){
+    public void setMinAlpha(float minAlpha){
         pageTransform.setMinAlpha(minAlpha);
     }
 
     public void setDotPadding(int dot_padding) {
         this.dot_padding = dot_padding;
+    }
+
+    public void setDotSize(int dot_size) {
+        this.dot_size = dot_size;
     }
 
     public void setDotSelectColor(int dot_select_color) {
@@ -201,9 +204,7 @@ public class BannerConfig {
     /*page改变时的监听*/
     ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-        }
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
         @Override
         public void onPageSelected(int position) {
@@ -212,9 +213,7 @@ public class BannerConfig {
         }
 
         @Override
-        public void onPageScrollStateChanged(int state) {
-
-        }
+        public void onPageScrollStateChanged(int state) {}
     };
 
     private void initRadioButton(int length) {
@@ -225,6 +224,9 @@ public class BannerConfig {
         Log.d(TAG,"selectColor:"+DOT_SELECT_COLOR);
         GradientDrawable item_default = (GradientDrawable)btn_default.getBackground();
         item_default.setColor(dot_default_color);
+        int size = DisplayUtils.dp2px(mContext,(float)dot_size);
+        item_select.setSize(size,size);
+        item_default.setSize(size,size);
 
         for (int i = 0; i < length; i++) {
             ImageView imageView = new ImageView(mContext);

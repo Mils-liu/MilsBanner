@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         milsBanner = (MilsBanner)findViewById(R.id.milsbanner);
-        //milsBanner.Config().setPageMargin(0);
-        milsBanner.setIndicatorMarginTop(-60);
-        milsBanner.Config().setDotSelectColor(0xFFFF0400);
-        milsBanner.Config().setDotDefaultColor(0xffffffff);
+
+        //milsBannerConfig(milsBanner);
+
+        /*初始化Banner*/
         milsBanner.init(images);
         milsBanner.BannerClick().setItemClickListener(new BannerAdapter.ItemClickListener() {
             @Override
@@ -33,5 +33,33 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"click:"+(++index),Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void milsBannerConfig(MilsBanner milsBanner){
+        /*设置指示器距Banner的距离*/
+        milsBanner.setIndicatorMarginTop(-60);
+        /*设置是否隐藏指示器*/
+        milsBanner.setIndHide(false);
+
+        /*设置Page的间距*/
+        milsBanner.Config().setPageMargin(20);
+        /*设置指示器选中的颜色*/
+        milsBanner.Config().setDotSelectColor(0xFFFF0400);
+        /*设置指示器默认的颜色*/
+        milsBanner.Config().setDotDefaultColor(0xffffffff);
+        /*设置指示器点的间距*/
+        milsBanner.Config().setDotPadding(20);
+        /*设置指示器点的大小*/
+        milsBanner.Config().setDotSize(10);
+        /*设置Banner开始循环播放的时刻（单位ms）*/
+        milsBanner.Config().setLoopStart(2000);
+        /*设置Banner循环播放的间隔（单位ms）*/
+        milsBanner.Config().setLoopPeriod(2000);
+        /*设置两边page的透明度（0f~1.0f）*/
+        milsBanner.Config().setMinAlpha(1.0f);
+        /*设置两边page的旋转的角度（0~360 你觉得好看就行。。。）*/
+        milsBanner.Config().setMaxRotation(0);
+        /*设置Banner播放的速度（单位ms）*/
+        milsBanner.Config().setScrollDuration(2000);
     }
 }

@@ -27,6 +27,9 @@ public class MilsBanner extends RelativeLayout implements View.OnTouchListener{
 
     private Button btn_select, btn_default;
 
+    /*是否隐藏指示器*/
+    private Boolean isIndHide = false;
+
     public MilsBanner(Context mContext, AttributeSet attrs){
         super(mContext,attrs);
         LayoutInflater.from(mContext).inflate(R.layout.milsbanner,this,true);
@@ -40,6 +43,9 @@ public class MilsBanner extends RelativeLayout implements View.OnTouchListener{
         bannerConfig = new BannerConfig(mContext);
     }
 
+    public void setIndHide(Boolean isIndHide) {this.isIndHide = isIndHide;}
+
+    /*设置指示器与顶部Banner的距离*/
     public void setIndicatorMarginTop(int dotMarginTop){
         LayoutParams lp = (LayoutParams)radioGroup.getLayoutParams();
         lp.topMargin = dotMarginTop;
@@ -60,6 +66,9 @@ public class MilsBanner extends RelativeLayout implements View.OnTouchListener{
     }
 
     public void initBanner(){
+        if (isIndHide){
+            radioGroup.setVisibility(GONE);
+        }
         bannerConfig.setViewPager(viewPager);
         bannerConfig.setRadioGroup(radioGroup);
         bannerConfig.setBtn_select(btn_select);

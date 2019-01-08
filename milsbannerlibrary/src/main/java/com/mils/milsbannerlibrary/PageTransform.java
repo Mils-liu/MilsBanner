@@ -9,11 +9,6 @@ import android.view.View;
 
 public class PageTransform implements ViewPager.PageTransformer{
 
-    //判断两边的page是否旋转
-    private Boolean isRotation = false;
-    //判断两边的page是否降低透明度
-    private Boolean isAlpha = false;
-
     private float maxRotation = 0;
 
     private float minAlpha = 1.0f;
