@@ -71,5 +71,5 @@ b.自定义配置
         milsBanner.Config().setScrollDuration(2000);
 ````
 # END
-github地址：https://github.com/Mils-liu/MilsBanner
+github地址：https://github.com/Mils-liu/MilsBanner  
 简书地址：https://www.jianshu.com/p/8769373c01e3
