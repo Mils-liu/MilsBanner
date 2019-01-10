@@ -3,9 +3,9 @@
 # 效果
 gif里是自动轮播，被我拖动和点击的效果
 ##### 1.默认配置
-![默认配置](https://upload-images.jianshu.io/upload_images/7019098-b09e1cd1a3e7b531.gif)
+![默认配置](https://upload-images.jianshu.io/upload_images/7019098-b09e1cd1a3e7b531.gif?imageMogr2/auto-orient/strip)
 ##### 2.自定义配置
-![自定义配置](https://upload-images.jianshu.io/upload_images/7019098-31c72842ab7f5d58.gif)
+![自定义配置](https://upload-images.jianshu.io/upload_images/7019098-31c72842ab7f5d58.gif?imageMogr2/auto-orient/strip)
 # 使用
 ##### 1. 依赖
 ````java
@@ -44,10 +44,15 @@ milsBanner.BannerClick().setItemClickListener(new BannerAdapter.ItemClickListene
 b.自定义配置
 自定义配置得写在milsBanner.init(images);之前
 ````java
-        /*设置指示器距Banner的距离*/
-        milsBanner.setIndicatorMarginTop(-60);
+        /*指示器的位置设置*/
+        milsBanner.setIndicatorMarginTop(0);
+        milsBanner.setIndicatorMarginRight(20);
+        milsBanner.setIndicatorMarginLeft(0);
+        milsBanner.setIndicatorMarginBottom(0);
+        milsBanner.setIndicatorAlignt(MilsBanner.ALIGN_PARENT_RIGHT);
+
         /*设置是否隐藏指示器*/
-        milsBanner.setIndHide(false);
+        milsBanner.setIndicatorHide(false);
 
         /*设置Page的间距*/
         milsBanner.Config().setPageMargin(20);
