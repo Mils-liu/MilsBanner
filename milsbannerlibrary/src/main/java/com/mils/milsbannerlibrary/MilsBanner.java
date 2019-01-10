@@ -17,6 +17,14 @@ import android.widget.RelativeLayout;
 
 public class MilsBanner extends RelativeLayout implements View.OnTouchListener{
 
+    public static final int ALIGN_PARENT_LEFT = 9;
+
+    public static final int ALIGN_PARENT_TOP = 10;
+
+    public static final int ALIGN_PARENT_RIGHT = 11;
+
+    public static final int ALIGN_PARENT_BOTTOM = 12;
+
     private String TAG = "MilsBanner";
 
     private BannerConfig bannerConfig;
@@ -26,6 +34,8 @@ public class MilsBanner extends RelativeLayout implements View.OnTouchListener{
     private RadioGroup radioGroup;
 
     private Button btn_select, btn_default;
+
+    LayoutParams lp;
 
     /*是否隐藏指示器*/
     private Boolean isIndHide = false;
@@ -39,16 +49,36 @@ public class MilsBanner extends RelativeLayout implements View.OnTouchListener{
         radioGroup = (RadioGroup)findViewById(R.id.milsbanner_radio_group);
         btn_select = (Button)findViewById(R.id.btn_select);
         btn_default = (Button)findViewById(R.id.btn_default);
+        lp = (LayoutParams)radioGroup.getLayoutParams();
         viewPager.setOnTouchListener(this);
         bannerConfig = new BannerConfig(mContext);
     }
 
-    public void setIndHide(Boolean isIndHide) {this.isIndHide = isIndHide;}
+    public void setIndicatorHide(Boolean isIndHide) {this.isIndHide = isIndHide;}
 
     /*设置指示器与顶部Banner的距离*/
     public void setIndicatorMarginTop(int dotMarginTop){
-        LayoutParams lp = (LayoutParams)radioGroup.getLayoutParams();
         lp.topMargin = dotMarginTop;
+        radioGroup.setLayoutParams(lp);
+    }
+
+    public void setIndicatorMarginLeft(int dotMarginLeft){
+        lp.leftMargin = dotMarginLeft;
+        radioGroup.setLayoutParams(lp);
+    }
+
+    public void setIndicatorMarginRight(int dotMarginRight){
+        lp.rightMargin = dotMarginRight;
+        radioGroup.setLayoutParams(lp);
+    }
+
+    public void setIndicatorMarginBottom(int dotMarginTop){
+        lp.topMargin = dotMarginTop;
+        radioGroup.setLayoutParams(lp);
+    }
+
+    public void setIndicatorAlignt(int align){
+        lp.addRule(align);
         radioGroup.setLayoutParams(lp);
     }
 

@@ -4,8 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.mils.milsbannerlibrary.BannerAdapter;
 import com.mils.milsbannerlibrary.MilsBanner;
+import com.mils.milsbannerlibrary.BannerAdapter;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         milsBanner = (MilsBanner)findViewById(R.id.milsbanner);
 
-        //milsBannerConfig(milsBanner);
+        milsBannerConfig(milsBanner);
 
         /*初始化Banner*/
         milsBanner.init(images);
@@ -36,10 +37,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void milsBannerConfig(MilsBanner milsBanner){
-        /*设置指示器距Banner的距离*/
-        milsBanner.setIndicatorMarginTop(-60);
+        /*指示器的位置设置*/
+        milsBanner.setIndicatorMarginTop(0);
+        milsBanner.setIndicatorMarginRight(20);
+        milsBanner.setIndicatorMarginLeft(0);
+        milsBanner.setIndicatorMarginBottom(0);
+        milsBanner.setIndicatorAlignt(MilsBanner.ALIGN_PARENT_RIGHT);
+
         /*设置是否隐藏指示器*/
-        milsBanner.setIndHide(false);
+        milsBanner.setIndicatorHide(false);
+
 
         /*设置Page的间距*/
         milsBanner.Config().setPageMargin(20);
