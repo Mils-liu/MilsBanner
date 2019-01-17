@@ -19,7 +19,7 @@ allprojects {
 ````java
 dependencies {
     ...
-    compile 'com.github.Mils-liu:MilsBanner:v1.0.0'
+    compile 'com.github.Mils-liu:MilsBanner:v1.0.1'
 }
 ````
 ##### 2. 加载的图片
